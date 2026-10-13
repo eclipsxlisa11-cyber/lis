@@ -9,8 +9,9 @@ try:
     from mfrc522 import SimpleMFRC522
     import RPi.GPIO as GPIO
     reader, HW = SimpleMFRC522(), True
-    BUZZER, LED_OK, LED_BAD = 12, 16, 18   # BCM pins: change to match your wiring
-    GPIO.setmode(GPIO.BCM)
+    BUZZER, LED_OK, LED_BAD = 32, 36, 12   # physical (BOARD) pin numbers: change to match your wiring
+    if GPIO.getmode() is None:             # mfrc522 normally sets BOARD mode itself
+        GPIO.setmode(GPIO.BOARD)
     for p in (BUZZER, LED_OK, LED_BAD):
         GPIO.setup(p, GPIO.OUT)
 except ImportError:

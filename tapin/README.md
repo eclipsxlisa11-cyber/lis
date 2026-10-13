@@ -37,4 +37,4 @@ No internet needed on the Pi: Chart.js is bundled in `static/`.
 - Anti-passback here is timing based (10 s) plus state tracking. It cannot detect a friend tapping someone else's card minutes later.
 - The dashboard and `/api/tap` have no login. Fine on an isolated lab network; add authentication before real use.
 - Warnings are emailed only if `SMTP_HOST` (and optionally `SMTP_PORT`, `SMTP_FROM`) are set; otherwise they are logged to the database.
-- Reader GPIO pins for the buzzer and LEDs (12, 16, 18, BCM) are placeholders: match them to your wiring.
+- Reader GPIO pins for the buzzer and LEDs (physical pins 32, 36, 12) are placeholders: match them to your wiring.
