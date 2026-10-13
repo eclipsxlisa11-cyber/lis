@@ -1,0 +1,3 @@
+flask
+mfrc522
+RPi.GPIO

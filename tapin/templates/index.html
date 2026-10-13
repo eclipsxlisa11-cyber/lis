@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TapIn Attendance Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">T</span><div><h1>TapIn</h1><p>31275 Mobile Networking &middot; RFID attendance</p></div></div>
+  <div class="top-right">
+    <label class="sel">Session <select id="session"></select></label>
+    <span id="live" class="pill"></span>
+    <span id="clock" class="clock"></span>
+  </div>
+</header>
+
+<main>
+  <section class="kpis" id="kpis"></section>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <section class="grid two">
+    <div class="card">
+      <div class="card-h"><h2>Attendance register</h2>
+        <div class="tools"><input id="search" placeholder="Search name or ID" aria-label="Search students">
+        <a id="csv" class="btn ghost" href="#">Export CSV</a></div></div>
+      <div class="scroll"><table id="register"><thead><tr>
+        <th>Student</th><th>Student ID</th><th>Tap in</th><th>Tap out</th><th>Time on site</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="stack">
+      <div class="card">
+        <div class="card-h"><h2>Exceptions</h2><span class="muted" id="exc-count"></span></div>
+        <ul id="exceptions" class="list"></ul>
+      </div>
+      <div class="card">
+        <div class="card-h"><h2>Live tap feed</h2></div>
+        <ul id="feed" class="list compact"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-h"><h2>Attendance zones</h2>
+      <span class="muted" id="policy"></span></div>
+    <div class="zones">
+      <div class="zcol"><canvas id="donut" ></canvas></div>
+      <div class="zcol wide"><canvas id="bars" ></canvas></div>
+      <div class="zcol"><canvas id="trend" ></canvas></div>
+    </div>
+    <div class="zlists" id="zlists"></div>
+  </section>
+
+  <section class="grid two">
+    <div class="card">
+      <div class="card-h"><h2>Warnings sent</h2></div>
+      <ul id="warnings" class="list compact"></ul>
+    </div>
+    <div class="card">
+      <div class="card-h"><h2>Reader simulator</h2><span class="muted">for demos without the RC522</span></div>
+      <div class="sim">
+        <select id="sim-card" aria-label="Card to tap"></select>
+        <button class="btn" id="sim-tap">Tap card</button>
+        <button class="btn ghost" id="sim-double">Double tap</button>
+        <button class="btn ghost" id="sim-unknown">Unknown card</button>
+        <button class="btn ghost danger" id="sim-reset">Reset demo data</button>
+      </div>
+      <p class="muted small">Taps go through the same code path as the RFID reader, so doubles are blocked and flagged exactly as in the live system.</p>
+    </div>
+  </section>
+</main>
+<footer>TapIn &middot; Raspberry Pi + RC522 &middot; Flask, SQLite, Chart.js</footer>
+<script src="/static/chart.umd.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
